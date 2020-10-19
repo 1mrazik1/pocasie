@@ -1,0 +1,7 @@
+{
+  "name": "pocasie",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
