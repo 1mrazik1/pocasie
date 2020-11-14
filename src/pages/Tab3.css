@@ -12,3 +12,7 @@ ion-img {
 ion-col {
     margin-right: 50%;
 }
+
+ion-title {
+  color: white;
+}

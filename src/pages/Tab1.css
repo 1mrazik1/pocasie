@@ -4,6 +4,72 @@ ion-content {
 
 h2 {
 padding:7px;
-padding-left: 15%;
-text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+padding-left: 11%;
+text-shadow: -1px 0 black, 0 2px black, 2px 0 black, 0 2px black;
+color: white;
+}
+
+.teplota {
+    padding:7px;
+    padding-left: 7%;
+    text-shadow: -1px 0 black, 0 2px black, 2px 0 black, 0 4px black;
+    color: white;
+    --o-border-image: auto;
+    font-size: 300%;
+    }
+
+ion-item{
+    color: white;
+}
+body {
+    /* Dark mode variables go here */
+    --ion-item-background: #1e1e1e;
+
+    --ion-toolbar-background: #1f1f1f;
+
+    --ion-tab-bar-background: #1f1f1f;
+
+    --ion-card-background: #1e1e1e;
+  }
+
+.Sunny {
+    --background: url(/assets/sunny.gif) no-repeat center/cover;
+    opacity: 0.8;
+}
+.Clouds {
+    --background: url(/assets/cloudy.gif) no-repeat center/cover;
+    opacity: 0.8;
+    text-decoration-color: black;
+}
+.Clear {
+    --background: url(/assets/clear.gif) no-repeat center/cover;
+    opacity: 0.8;
+}
+.Thunderstorm {
+    --background: url(/assets/thunder.gif) no-repeat center/cover;
+    opacity: 0.8;
+}
+.Drizzle {
+    --background: url(/assets/rainy.gif) no-repeat center/cover;
+    opacity: 0.8;
+}
+.Rain {
+    --background: url(/assets/rainy.gif) no-repeat center/cover;
+    opacity: 0.8;
+}
+.Snow {
+    --background: url(/assets/snow.gif) no-repeat center/cover;
+    opacity: 0.8;
+}
+.Mist,
+.Smoke,
+.Dust,
+.Fog,
+.Sand,
+.Ash,
+.Squall,
+.Tornado,
+.Haze {
+    --background: url(/assets/img/haze.jpg) no-repeat center/cover;
+    opacity: 0.8;
 }
