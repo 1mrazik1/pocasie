@@ -61,15 +61,21 @@ body {
     --background: url(/assets/snow.gif) no-repeat center/cover;
     opacity: 0.8;
 }
-.Mist,
+.Mist {
+    --background: url(/assets/misty.gif) no-repeat center/cover;
+    opacity: 0.8;
+}
 .Smoke,
 .Dust,
-.Fog,
+.Fog {
+    --background: url(/assets/misty.gif) no-repeat center/cover;
+    opacity: 0.8;
+}
 .Sand,
 .Ash,
 .Squall,
 .Tornado,
 .Haze {
-    --background: url(/assets/img/haze.jpg) no-repeat center/cover;
+    --background: url(/assets/misty.gif) no-repeat center/cover;
     opacity: 0.8;
 }

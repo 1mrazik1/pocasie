@@ -21,6 +21,9 @@ const pismenka: any = {
   Thunderstorm: "Thunderstorm",
   Drizzle: "Drizzle",
   Sunny: "Sunny",
+  Mist: "Mist",
+  Fog: "Fog",
+  Haze: "Haze",
 }
 const Tab1: React.FC = () => {
   const [text, setText] = useState<string>('Ružomberok');
