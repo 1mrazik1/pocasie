@@ -4,6 +4,7 @@ import ExploreContainer from '../components/ExploreContainer';
 import './Tab1.css';
 import { star, cloudOutline, rainy, cloudy, sunny, thunderstorm, snow, rose, location, thermometer, navigate, compass, water, body} from 'ionicons/icons';
 
+
 const icons: any = {
   Clouds: cloudy,
   Clear: sunny,
