@@ -80,7 +80,7 @@ const Tab2: React.FC = () => {
           
             <IonItemDivider className={forecast?.weather && pismenka[forecast.weather[0].main]} >
             <h6 className="ion-text-center">
-            <IonIcon icon={forecast?.weather && icons[forecast.weather[0].main]}/>
+            <IonIcon icon={forecast?.weather && icons[forecast.weather[0].main]}/>{'  '}
               {(new Date(forecast.dt*1000)).toDateString()}
              : {forecast.temp.day}°C,   
              {forecast.weather[0].description}
