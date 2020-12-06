@@ -64,10 +64,6 @@ const App: React.FC = () => {
               <IonIcon icon={cloudyNightOutline} />
               <IonLabel><h3>Na 7 dní</h3></IonLabel>
             </IonTabButton>
-            <IonTabButton tab="tab4" href="/tab4">
-              <IonIcon icon={cloudyNightOutline} />
-              <IonLabel><h3>História</h3></IonLabel>
-            </IonTabButton>
             <IonTabButton tab="tab3" href="/tab3">
               <IonIcon icon={callOutline} />
               <IonLabel><h3>Kontakt</h3></IonLabel>

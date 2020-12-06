@@ -5,3 +5,57 @@ opacity: 0.6;
 ion-label{
     opacity: 100%;
     }
+
+h6 {
+        padding-left: 2px;
+        text-shadow: -1px 0 rgb(0, 0, 0), 0 1px rgb(0, 0, 0), 1px 0 rgb(0, 0, 0), 0 2px rgb(0, 0, 0);
+        color: rgb(255, 255, 255);
+        }
+
+        .Sunny {
+            --background: url(/assets/sunny.gif) no-repeat center/cover;
+            opacity: 0.8;
+        }
+        .Clouds {
+            --background: url(/assets/cloudy.gif) no-repeat center/cover;
+            opacity: 0.8;
+            text-decoration-color: black;
+        }
+        .Clear {
+            --background: url(/assets/clear.gif) no-repeat center/cover;
+            opacity: 0.8;
+        }
+        .Thunderstorm {
+            --background: url(/assets/thunder.gif) no-repeat center/cover;
+            opacity: 0.8;
+        }
+        .Drizzle {
+            --background: url(/assets/rainy.gif) no-repeat center/cover;
+            opacity: 0.8;
+        }
+        .Rain {
+            --background: url(/assets/rainy.gif) no-repeat center/cover;
+            opacity: 0.8;
+        }
+        .Snow {
+            --background: url(/assets/snow.gif) no-repeat center/cover;
+            opacity: 0.8;
+        }
+        .Mist {
+            --background: url(/assets/misty.gif) no-repeat center/cover;
+            opacity: 0.8;
+        }
+        .Smoke,
+        .Dust,
+        .Fog {
+            --background: url(/assets/misty.gif) no-repeat center/cover;
+            opacity: 0.8;
+        }
+        .Sand,
+        .Ash,
+        .Squall,
+        .Tornado,
+        .Haze {
+            --background: url(/assets/misty.gif) no-repeat center/cover;
+            opacity: 0.8;
+        }

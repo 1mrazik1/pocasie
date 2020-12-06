@@ -5,18 +5,26 @@ import { star, cloudOutline, rainy, cloudy, sunny, thunderstorm, snow, rose, loc
 import './Tab2.css';
 import { useApi } from '../api';
 
-  const pismenka: any = {
-    Clouds: cloudy,
-    Clear: sunny,
-    Rain: rainy,
-    Snow: snow,
-    Thunderstorm: thunderstorm,
-    Drizzle: rose,
-    Sunny: sunny,
-    Mist: cloudy,
-    Fog: cloudy,
-    Haze: cloudy,
-  }
+const icons: any = {
+  Clouds: cloudy,
+  Clear: sunny,
+  Rain: rainy,
+  Snow: snow,
+  Thunderstorm: thunderstorm,
+  Drizzle: rose,
+}
+const pismenka: any = {
+  Clouds: "Clouds",
+  Clear: "Clear",
+  Rain: "Rain",
+  Snow: "Snow",
+  Thunderstorm: "Thunderstorm",
+  Drizzle: "Drizzle",
+  Sunny: "Sunny",
+  Mist: "Mist",
+  Fog: "Fog",
+  Haze: "Haze",
+}
 
   const today = new Date().getDate();
   const today2 = new Date().getMonth();
@@ -30,6 +38,7 @@ const Tab2: React.FC = () => {
     return <div>Loading...</div>;
   }
   return (
+    /*  
     <IonPage>
       <IonHeader>
         <IonToolbar>
@@ -52,12 +61,12 @@ const Tab2: React.FC = () => {
       </IonContent>
     </IonPage>
   );
-  return (
+  return (*/
     
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>Predpoveď na týždeň</IonTitle>
+          <IonTitle className="ion-text-center">  <IonIcon color="primary" icon={rainy} /> <IonIcon color="warning" icon={sunny} />  Predpoveď na týždeň  <IonIcon color="warning" icon={sunny} />   <IonIcon color="primary" icon={rainy} /> </IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
@@ -66,42 +75,22 @@ const Tab2: React.FC = () => {
             <IonTitle size="large">Predpoveď na týždeň</IonTitle>
           </IonToolbar>
         </IonHeader>
-    <IonItemDivider color="secondary">
-      <IonLabel>
-      {today+1}.{today2} <br></br>
-      <IonIcon icon={items?.daily && pismenka[items.daily[0].weather[0].main]} />
-      </IonLabel>
-    </IonItemDivider>
-    <IonItemDivider color="secondary">
-      <IonLabel>
-      {today+2}.{today2}
-      </IonLabel>
-    </IonItemDivider>
-    <IonItemDivider color="secondary">
-      <IonLabel>
-      {today+3}.{today2}
-      </IonLabel>
-    </IonItemDivider>
-    <IonItemDivider color="secondary">
-      <IonLabel>
-      {today+4}.{today2}
-      </IonLabel>
-    </IonItemDivider>
-    <IonItemDivider color="secondary">
-      <IonLabel>
-      {today+5}.{today2}
-      </IonLabel>
-    </IonItemDivider>
-    <IonItemDivider color="secondary">
-      <IonLabel>
-      {today+6}.{today2}
-      </IonLabel>
-    </IonItemDivider>
-    <IonItemDivider color="secondary">
-      <IonLabel>
-      {today+7}.{today2}
-      </IonLabel>
-    </IonItemDivider>
+        <br></br>
+      {items?.daily?.map((forecast: any) => (<div>
+          
+            <IonItemDivider className={forecast?.weather && pismenka[forecast.weather[0].main]} >
+            <h6 className="ion-text-center">
+            <IonIcon icon={forecast?.weather && icons[forecast.weather[0].main]}/>
+              {(new Date(forecast.dt*1000)).toDateString()}
+             : {forecast.temp.day}°C,   
+             {forecast.weather[0].description}
+             , <IonIcon icon={forecast?.weather && icons[forecast.weather[0].main]}/>
+             </h6>
+             </IonItemDivider>
+       
+          <br/>
+          </div>
+      ))}    
       </IonContent>
     </IonPage>
   );
