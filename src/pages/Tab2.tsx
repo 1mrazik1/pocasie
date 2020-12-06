@@ -3,6 +3,7 @@ import { IonIcon, IonItemDivider, IonLabel, IonList, IonItem, IonContent, IonHea
 import ExploreContainer from '../components/ExploreContainer';
 import { star, cloudOutline, rainy, cloudy, sunny, thunderstorm, snow, rose, location, thermometer, navigate, compass, water, body} from 'ionicons/icons';
 import './Tab2.css';
+import { useApi } from '../api';
 
   const pismenka: any = {
     Clouds: cloudy,
@@ -21,33 +22,36 @@ import './Tab2.css';
   const today2 = new Date().getMonth();
 const Tab2: React.FC = () => {
   const [text, setText] = useState<string>('Ružomberok');
-  const [number, setNumber] = useState<number>();
-  const [error, setError] = useState<any>(null);
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [items, setItems] = useState<any>([]);
-  React.useEffect(() => {
-    fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=49.07&lon=19.31&exclude=daily&appid=1285213a1b770d1df95522fc1bb6ff1b&units=metric&lang=sk`)
-      .then(res => res.json())
-      .then(
-        (result) => {
-          setIsLoaded(true);
-          setItems(result);
-        },
-        // Note: it's important to handle errors here
-        // instead of a catch() block so that we don't swallow
-        // exceptions from actual bugs in components.
-        (error) => {
-          setIsLoaded(true);
-          setError(error);
-        }
-      )
-  }, [text])
+  const {isLoaded, error, items} = useApi(text)
 
   if (error) {
     return <div>Error: {error?.message}</div>;
   } else if (!isLoaded) {
     return <div>Loading...</div>;
   }
+  return (
+    <IonPage>
+      <IonHeader>
+        <IonToolbar>
+          <IonTitle>Predpoveď na týždeň</IonTitle>
+        </IonToolbar>
+      </IonHeader>
+      <IonContent fullscreen>
+        <pre>
+          {JSON.stringify(items, null, 2)}
+        </pre>
+        {items?.daily?.map((forecast: any) => (<div>
+          <span>
+            {(new Date(forecast.dt*1000)).toDateString()}
+            {forecast.temp.day}
+            {forecast.weather[0].description}
+          </span>
+          <br/>
+          </div>
+        ))}
+      </IonContent>
+    </IonPage>
+  );
   return (
     
     <IonPage>
