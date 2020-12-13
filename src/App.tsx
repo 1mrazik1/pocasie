@@ -37,6 +37,10 @@ import './theme/variables.css';
 
 
 const App: React.FC = () => {
+  const search = React.useRef<string>('Ružomberok');
+  const setText = (text: string) => {
+    search.current = text
+  }
   const file = React.useRef<HTMLAudioElement>();
   React.useEffect(() => {
     file.current = new Audio('assets/pocasie.mp3')
@@ -49,8 +53,8 @@ const App: React.FC = () => {
       <IonReactRouter>
         <IonTabs>
           <IonRouterOutlet>
-            <Route path="/tab1" component={Tab1} exact={true} />
-            <Route path="/tab2" component={Tab2} exact={true} />
+            <Route path="/tab1" component={() => <Tab1 text={search.current} setText={setText}/>} exact={true} />
+            <Route path="/tab2" component={() => <Tab2 text={search.current} setText={setText}/>} exact={true}/>
             <Route path="/tab4" component={Tab4} exact={true} />
             <Route path="/tab3" component={Tab3} />
             <Route path="/" render={() => <Redirect to="/tab1" />} exact={true} />

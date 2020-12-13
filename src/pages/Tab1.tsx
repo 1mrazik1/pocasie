@@ -26,12 +26,16 @@ const pismenka: any = {
   Fog: "Fog",
   Haze: "Haze",
 }
-const Tab1: React.FC = () => {
-  const [text, setText] = useState<string>('Ružomberok');
-  const [number, setNumber] = useState<number>();
+
+interface ContainerProps {
+  text: string;
+  setText: (text: string) => void;
+}
+const Tab1: React.FC<ContainerProps> = ({text, setText}) => {
   const [error, setError] = useState<any>(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [items, setItems] = useState<any>([]);
+  const [localText, setLocalText] = useState<string>(text);
 
 // Use matchMedia to check the user preference
 const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
@@ -49,7 +53,7 @@ function toggleDarkTheme(shouldAdd:any) {
   // this useEffect will run once
   // similar to componentDidMount()
   React.useEffect(() => {
-    fetch(`http://api.openweathermap.org/data/2.5/weather?q=${text}&appid=1285213a1b770d1df95522fc1bb6ff1b&units=metric&lang=sk`)
+    fetch(`http://api.openweathermap.org/data/2.5/weather?q=${localText}&appid=1285213a1b770d1df95522fc1bb6ff1b&units=metric&lang=sk`)
       .then(res => res.json())
       .then(
         (result) => {
@@ -64,7 +68,7 @@ function toggleDarkTheme(shouldAdd:any) {
           setError(error);
         }
       )
-  }, [text])
+  }, [localText])
 
   if (error) {
     return <div>Error: {error?.message}</div>;
@@ -86,7 +90,10 @@ function toggleDarkTheme(shouldAdd:any) {
         </IonHeader>
         <IonItem>
             <IonLabel position="floating" className="ion-text-center">Zadaj názov mesta</IonLabel>
-            <IonInput className="ion-text-center" value={text} onIonInput={(e: any) => setText(e.target?.value)}></IonInput>
+            <IonInput className="ion-text-center" value={text} onIonInput={(e: any) => {
+              setText(e.target?.value)
+              setLocalText(e.target?.value)
+            }}></IonInput>
           </IonItem>          
          {/*  <IonButton expand="full">Hľadaj</IonButton> */}
          <br></br>

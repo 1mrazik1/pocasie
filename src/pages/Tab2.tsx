@@ -28,8 +28,13 @@ const pismenka: any = {
 
   const today = new Date().getDate();
   const today2 = new Date().getMonth();
-const Tab2: React.FC = () => {
-  const [text, setText] = useState<string>('Ružomberok');
+
+  interface ContainerProps {
+    text: string;
+    setText: (text: string) => void;
+  }
+  
+const Tab2: React.FC<ContainerProps> = ({text}) => {
   const {isLoaded, error, items} = useApi(text)
 
   if (error) {
@@ -38,31 +43,7 @@ const Tab2: React.FC = () => {
     return <div>Loading...</div>;
   }
   return (
-    /*  
-    <IonPage>
-      <IonHeader>
-        <IonToolbar>
-          <IonTitle>Predpoveď na týždeň</IonTitle>
-        </IonToolbar>
-      </IonHeader>
-      <IonContent fullscreen>
-        <pre>
-          {JSON.stringify(items, null, 2)}
-        </pre>
-        {items?.daily?.map((forecast: any) => (<div>
-          <span>
-            {(new Date(forecast.dt*1000)).toDateString()}
-            {forecast.temp.day}
-            {forecast.weather[0].description}
-          </span>
-          <br/>
-          </div>
-        ))}
-      </IonContent>
-    </IonPage>
-  );
-  return (*/
-    
+   
     <IonPage>
       <IonHeader>
         <IonToolbar>
@@ -76,7 +57,7 @@ const Tab2: React.FC = () => {
           </IonToolbar>
         </IonHeader>
         <br></br>
-      {items?.daily?.map((forecast: any) => (<div>
+      {items?.daily?.map((forecast: any) => (<div key={forecast.dt}>
           
             <IonItemDivider className={forecast?.weather && pismenka[forecast.weather[0].main]} >
             <h6 className="ion-text-center">
